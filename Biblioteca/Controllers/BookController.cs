@@ -15,7 +15,7 @@ namespace Biblioteca.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var booksList = await _bookServices.GetAllProductsAsync();
+            var booksList = await _bookServices.GetAllBooksAsync();
 
             return View(booksList);
         }

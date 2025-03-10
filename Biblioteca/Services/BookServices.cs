@@ -1,6 +1,9 @@
 ﻿using Biblioteca.Data;
 using Biblioteca.ViewModels;
 using Biblioteca.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Biblioteca.Services
 {
@@ -8,20 +11,25 @@ namespace Biblioteca.Services
     {
         private readonly LibraryDbContext _context;
 
-        public async Task<BooksListViewModel> GetAllProductsAsync()
+        public BookServices(LibraryDbContext context) 
+        {
+            _context = context;
+        }
+
+        public async Task<BooksListViewModel> GetAllBooksAsync() 
         {
             try
             {
-                var booksList = new BooksListViewModel();
-
-
-                booksList.Books = await _context.Books.ToListAsync();
+                var booksList = new BooksListViewModel
+                {
+                    Books = await _context.Books.ToListAsync()
+                };
 
                 return booksList;
             }
             catch
             {
-                return new BooksListViewModel() { Books = new List<Book>() };
+                return new BooksListViewModel { Books = new List<Book>() };
             }
         }
     }
