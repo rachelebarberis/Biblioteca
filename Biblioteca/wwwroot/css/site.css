@@ -20,3 +20,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+    box-shadow: none !important;
+}

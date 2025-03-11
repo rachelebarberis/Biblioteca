@@ -5,33 +5,43 @@
 }
 @if (Model.Books != null && Model.Books.Any())
 {
-    <h1 class="text-center">Books</h1>
-    <div class="container">
-
-		<a class="btn btn-danger mb-3" asp-controller="Book" asp-action="Add">Add new Book</a>
-    <div class="row">
-    @foreach (var book in Model.Books)
-    {
-        <div class="col-md-4">
-			<div class="card border mb-2 border-1 border-dark">
-				<div class="card-body">
-					<div class="card-title">Title: @book.Title</div>
-					<div class="card-text">Author: @book.Author</div>
-					<div class="card-text">Genre @book.Genre</div>
-					<div class="card-text">Availability: @book.Availability</div>
-							<a class="btn btn-sm btn-secondary mt-2" asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Details</a>
-				</div>
-				
-			</div>
-      
-        </div>
+	<h1 class="text-center" style="color:#00204a;">Books</h1>
+	<div class="container">
+<div class=" text-end">
+			<a class="btn mb-3 text-white" asp-controller="Book" asp-action="Add" style="background-color:#f76b8a;">Add new Book</a>
+</div>
 		
+		<div class="row">
+			@foreach (var book in Model.Books)
+			{
+				<div class="col-md-4">
+					<div class="card border border-1 mb-2" style="background-color:white;">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-7">
+								<div class="card-title fw-bold" style="color:#f76b8a">@book.Title</div>
+									<div class="card-text" style="color: #00204a;">Author: @book.Author</div>
+									<div class="card-text" style="color: #00204a;">Genre @book.Genre</div>
+									<div class="card-text" style="color: #00204a;">Availability: @book.Availability</div>
+								<a class="btn btn-sm mt-2" style="background-color:#f76b8a; color:white;" asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Details</a>
+							</div>
+							<div class="col-5">
+								<img src="@book.ImgCover"/>
+							</div>
+							</div>
 
-    }
-	</div>
+						</div>
+
+					</div>
+
+				</div>
+
+
+			}
+		</div>
 	</div>
 }
 else
 {
-    <p class="text-danger">No products found</p>
+	<p class="text-danger">No products found</p>
 }
