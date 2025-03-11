@@ -7,10 +7,10 @@
 {
 	<h1 class="text-center" style="color:#00204a;">Books</h1>
 	<div class="container">
-<div class=" text-end">
+		<div class=" text-end">
 			<a class="btn mb-3 text-white" asp-controller="Book" asp-action="Add" style="background-color:#f76b8a;">Add new Book</a>
-</div>
-		
+		</div>
+
 		<div class="row">
 			@foreach (var book in Model.Books)
 			{
@@ -19,15 +19,16 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-7">
-								<div class="card-title fw-bold" style="color:#f76b8a">@book.Title</div>
+									<div class="card-title fw-bold" style="color:#f76b8a">@book.Title</div>
 									<div class="card-text" style="color: #00204a;">Author: @book.Author</div>
 									<div class="card-text" style="color: #00204a;">Genre @book.Genre</div>
 									<div class="card-text" style="color: #00204a;">Availability: @book.Availability</div>
-								<a class="btn btn-sm mt-2" style="background-color:#f76b8a; color:white;" asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Details</a>
-							</div>
-							<div class="col-5">
-								<img src="@book.ImgCover"/>
-							</div>
+									<a class="btn btn-sm mt-2" style="background-color:#f76b8a; color:white;" asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Details</a>
+								</div>
+								<div class="col-5">
+									<img src="@book.ImgCover" style="width: 100%; height: auto; object-fit: cover; display: block;" />
+								</div>
+
 							</div>
 
 						</div>
