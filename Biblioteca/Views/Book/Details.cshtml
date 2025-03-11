@@ -1,0 +1,17 @@
+﻿@model BookDetailsViewModel
+
+@{
+    ViewData["Title"] = "Book details";
+}
+
+<div class="card border mb-2 border-1 border-dark">
+	<div class="card-body">
+		<div class="card-title">Title: @Model.Title</div>
+		<div class="card-text">Author: @Model.Author</div>
+		<div class="card-text">Genre @Model.Genre</div>
+		<div class="card-text">Availability: @Model.Availability</div>
+		<a class="btn btn-sm btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+		<a class="btn btn-sm btn-warning" asp-controller="Book" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+	</div>
+
+</div>

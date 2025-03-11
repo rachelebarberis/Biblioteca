@@ -1,0 +1,32 @@
+﻿@model AddBookViewModel
+
+@{
+    ViewData["Title"] = "Add new product";
+}
+
+
+<form method="post" asp-controller="Book" asp-action="Add">
+    <div class="mb-3">
+        <label for="Title" class="form-label">Title</label>
+        <input id="title" type="text" class="form-control" asp-for="Title" />
+    </div>
+    <div class="mb-3">
+        <label for="Author" class="form-label">Author</label>
+        <input id="Author" type="text" class="form-control" asp-for="Author"/>
+    </div>
+    <div class="mb-3">
+        <label for="Genre" class="form-label">Genre</label>
+        <input id="Genre" type="text" class="form-control" asp-for="Genre" />
+    </div>
+    <div class="mb-3">
+        <label for="Availability" class="form-label">Availability</label>
+        <input id="Availability" type="text" class="form-control" asp-for="Availability" />
+    </div>
+    <div class="mb-3">
+        <label for="ImgCover" class="form-label">ImgCover</label>
+        <input id="ImgCover" type="text" class="form-control" asp-for="ImgCover" />
+    </div>
+   
+    
+    <button>Save</button>
+</form>

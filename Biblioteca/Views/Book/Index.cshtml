@@ -3,3 +3,35 @@
 @{
 	ViewData["Title"] = "All Books";
 }
+@if (Model.Books != null && Model.Books.Any())
+{
+    <h1 class="text-center">Books</h1>
+    <div class="container">
+
+		<a class="btn btn-danger mb-3" asp-controller="Book" asp-action="Add">Add new Book</a>
+    <div class="row">
+    @foreach (var book in Model.Books)
+    {
+        <div class="col-md-4">
+			<div class="card border mb-2 border-1 border-dark">
+				<div class="card-body">
+					<div class="card-title">Title: @book.Title</div>
+					<div class="card-text">Author: @book.Author</div>
+					<div class="card-text">Genre @book.Genre</div>
+					<div class="card-text">Availability: @book.Availability</div>
+							<a class="btn btn-sm btn-secondary mt-2" asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Details</a>
+				</div>
+				
+			</div>
+      
+        </div>
+		
+
+    }
+	</div>
+	</div>
+}
+else
+{
+    <p class="text-danger">No products found</p>
+}
