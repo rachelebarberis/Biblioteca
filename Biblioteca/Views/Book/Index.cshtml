@@ -15,9 +15,9 @@
 			@foreach (var book in Model.Books)
 			{
 				<div class="col-md-4">
-					<div class="card border border-1 mb-2" style="background-color:white;">
+					<div class="card border border-1 mb-2" style="background-color:white; height:220px;">
 						<div class="card-body">
-							<div class="row">
+							<div class="row align-items-center">
 								<div class="col-7">
 									<div class="card-title fw-bold" style="color:#f76b8a">@book.Title</div>
 									<div class="card-text" style="color: #00204a;">Author: @book.Author</div>
@@ -26,7 +26,9 @@
 									<a class="btn btn-sm mt-2" style="background-color:#f76b8a; color:white;" asp-controller="Book" asp-action="Details" asp-route-id="@book.Id">Details</a>
 								</div>
 								<div class="col-5">
+								
 									<img src="@book.ImgCover" style="width: 100%; height: auto; object-fit: cover; display: block;" />
+								
 								</div>
 
 							</div>

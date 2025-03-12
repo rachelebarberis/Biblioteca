@@ -7,6 +7,9 @@ namespace Biblioteca.Data
     {
         public LibraryDbContext(DbContextOptions<LibraryDbContext> options) : base(options) { }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Prestito> Prestiti { get; set; }
+
+      
     }
 }
 

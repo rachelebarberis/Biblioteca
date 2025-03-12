@@ -1,0 +1,30 @@
+﻿@model AddLoanViewModel
+
+@{
+    ViewData["Title"] = "Add new Loan";
+}
+
+<form method="post" asp-controller="Loan" asp-action="Add">
+    <div class="mb-3">
+        <label for="BookId" class="form-label">BookId</label>
+        <input id="BookId" type="text" class="form-control" asp-for="BookId" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="User" class="form-label">User</label>
+        <input id="User" type="text" class="form-control" asp-for="User" required />
+    </div>
+    <div class="mb-3">
+        <label for="EmailUser" class="form-label">Email</label>
+        <input id="EmailUser" type="email" class="form-control" asp-for="EmailUser" required />
+    </div>
+    <div class="mb-3">
+        <label for="LoanDate" class="form-label">Loan Date</label>
+        <input id="LoanDate" type="date" class="form-control" asp-for="LoanDate" readonly />
+    </div>
+    <div class="mb-3">
+        <label for="ReturnDate" class="form-label">Return Date</label>
+        <input id="ReturnDate" type="date" class="form-control" asp-for="ReturnDate" readonly />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+

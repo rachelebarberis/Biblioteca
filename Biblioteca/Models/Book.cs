@@ -24,5 +24,7 @@ namespace Biblioteca.Models
 
         [Required]
         public required string ImgCover { get; set; }
+
+        public ICollection<Prestito>? Prestiti { get; set; }
     }
 }

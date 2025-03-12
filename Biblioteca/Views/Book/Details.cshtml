@@ -1,17 +1,25 @@
 ﻿@model BookDetailsViewModel
 
 @{
-    ViewData["Title"] = "Book details";
+    ViewData["Title"] = "Book Details";
 }
 
-<div class="card border mb-2 border-1 border-dark">
-	<div class="card-body">
-		<div class="card-title">Title: @Model.Title</div>
-		<div class="card-text">Author: @Model.Author</div>
-		<div class="card-text">Genre @Model.Genre</div>
-		<div class="card-text">Availability: @Model.Availability</div>
-		<a class="btn btn-sm btn-danger" asp-controller="Book" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-		<a class="btn btn-sm btn-warning" asp-controller="Book" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-	</div>
-
+<div class="card border border-dark shadow-lg rounded-3 mb-4">
+    <div class="card-body">
+        <h4 class="card-title text-primary fw-bold mb-3">@Model.Title</h4>
+        <p class="card-text"><strong>Author:</strong> @Model.Author</p>
+        <p class="card-text"><strong>Genre:</strong> @Model.Genre</p>
+        <p class="card-text"><strong>Availability:</strong> @Model.Availability</p>
+        <div class="d-flex gap-2">
+            <a class="btn btn-danger btn-sm px-3" asp-controller="Book" asp-action="Delete" asp-route-id="@Model.Id">
+                <i class="bi bi-trash"></i> Delete
+            </a>
+            <a class="btn btn-warning btn-sm px-3" asp-controller="Book" asp-action="Edit" asp-route-id="@Model.Id">
+                <i class="bi bi-pencil"></i> Edit
+            </a>
+            <a class="btn btn-primary btn-sm px-3" asp-controller="Loan" asp-action="Add" asp-route-id="@Model.Id">
+                Loan
+            </a>
+        </div>
+    </div>
 </div>
