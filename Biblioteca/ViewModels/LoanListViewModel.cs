@@ -4,6 +4,6 @@ namespace Biblioteca.ViewModels
 {
     public class LoanListViewModel
     {
-        public List<Prestito> Prestiti { get; set; }
+        public List<Prestito> Prestiti { get; set; } = new List<Prestito>();
     }
 }

@@ -9,11 +9,11 @@ namespace Biblioteca.Models
         public Guid? Id { get; set; }
 
         [Required]
-        public required string User { get; set; }
+        public string? User { get; set; }
 
         [Required]
         [EmailAddress]
-        public required string EmailUser { get; set; }
+        public string? EmailUser { get; set; }
 
         [Required]
         [DataType(DataType.DateTime)]

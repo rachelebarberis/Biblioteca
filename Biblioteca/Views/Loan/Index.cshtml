@@ -1,2 +1,19 @@
-﻿
+﻿@model LoanListViewModel
 <h1>Lista prestiti </h1>
+
+<div class="container">
+	<div class="row">
+		@foreach (var prestito in Model.Prestiti)
+		{
+			<div class="col-5">
+				<div class="card-text">@prestito.User</div>
+				<div class="card-text">@prestito.EmailUser</div>
+				<div class="card-text">@prestito.BookId</div>
+			</div>
+			<div class="col-7">
+				<div class="card-text">@prestito.LoanDate</div>
+				<div class="card-text">@prestito.ReturnDate</div>
+			</div>
+		}
+	</div>
+</div>

@@ -1,6 +1,7 @@
 ﻿using Biblioteca.Data;
 using Biblioteca.Models;
 using Biblioteca.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Biblioteca.Services
 {
@@ -33,6 +34,24 @@ namespace Biblioteca.Services
                 return false;
             }
         }
+
+        public async Task<LoanListViewModel> GetAllLoansAsync()
+        {
+            try
+            {
+                var loansList = new LoanListViewModel
+                {
+                    Prestiti = await _context.Prestiti.ToListAsync()
+                };
+
+                return loansList;
+            }
+            catch
+            {
+                return new LoanListViewModel { Prestiti = new List<Prestito>() };
+            }
+        }
+
 
         public async Task<bool> AddLoanAsync(AddLoanViewModel addLoanViewModel)
         {

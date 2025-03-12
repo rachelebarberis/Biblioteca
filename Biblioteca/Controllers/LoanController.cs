@@ -12,11 +12,13 @@ namespace Biblioteca.Controllers
         {
             _loanServices = loanServices;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var loans = await _loanServices.GetAllLoansAsync();
+            return View(loans);
         }
-        [HttpGet("{id:guid}")]
+
+
         public IActionResult Add(Guid id)
         {
             var add = new AddLoanViewModel() {BookId=id};
