@@ -41,7 +41,7 @@ namespace Biblioteca.Services
             {
                 var loansList = new LoanListViewModel
                 {
-                    Prestiti = await _context.Prestiti.ToListAsync()
+                    Prestiti = await _context.Prestiti.Include(b => b.Book).ToListAsync()
                 };
 
                 return loansList;

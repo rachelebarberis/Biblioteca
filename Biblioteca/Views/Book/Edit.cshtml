@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Edit Book";
 }
-<form method="post" asp-controller="Book" asp-action="Edit">
+<form method="post" asp-controller="Book" asp-action="Edit" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="Title" class="form-label">Title</label>
         <input id="title" type="text" class="form-control" asp-for="Title" />
@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
         <label for="ImgCover" class="form-label">ImgCover</label>
-        <input id="ImgCover" type="text" class="form-control" asp-for="ImgCover" />
+        <input id="ImgCover" type="file" class="form-control" asp-for="ImgCover" />
     </div>
 
 

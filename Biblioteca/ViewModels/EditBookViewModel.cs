@@ -7,6 +7,8 @@
         public  required string Author { get; set; }
         public required string Genre { get; set; }
         public required bool Availability { get; set; }
-        public required string ImgCover { get; set; }
+        public IFormFile? ImgCover { get; set; }
+
+        public string? ImgPath { get; set; }
     }
 }

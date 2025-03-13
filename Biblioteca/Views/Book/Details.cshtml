@@ -10,6 +10,7 @@
         <p class="card-text"><strong>Author:</strong> @Model.Author</p>
         <p class="card-text"><strong>Genre:</strong> @Model.Genre</p>
         <p class="card-text"><strong>Availability:</strong> @Model.Availability</p>
+        <p>@Model.ImgCover</p>
         <div class="d-flex gap-2">
             <a class="btn btn-danger btn-sm px-3" asp-controller="Book" asp-action="Delete" asp-route-id="@Model.Id">
                 <i class="bi bi-trash"></i> Delete

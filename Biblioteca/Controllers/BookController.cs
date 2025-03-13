@@ -90,7 +90,8 @@ namespace Biblioteca.Controllers
                 Author = book.Author,
                 Genre = book.Genre,
                 Availability = book.Availability,
-                ImgCover = book.ImgCover
+                ImgPath = book.ImgCover,
+ 
             };
             return View(editBookViewModel);
         }

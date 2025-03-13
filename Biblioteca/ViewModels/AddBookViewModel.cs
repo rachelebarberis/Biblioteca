@@ -23,6 +23,6 @@ namespace Biblioteca.ViewModels
         public required bool Availability { get; set; }
 
         [Required]
-        public required string ImgCover { get; set; }
+        public IFormFile? ImgCover { get; set; }
     }
 }

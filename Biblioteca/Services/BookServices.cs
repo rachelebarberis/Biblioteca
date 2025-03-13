@@ -56,6 +56,15 @@ namespace Biblioteca.Services
 
         public async Task<bool> AddBookAsync(AddBookViewModel addBookViewModel)
         {
+            var fileName = addBookViewModel.ImgCover.FileName;
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", fileName);
+
+            await using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await addBookViewModel.ImgCover.CopyToAsync(stream);
+            }
+
+            var webPath = Path.Combine("Uploads", fileName).Replace("\\", "/");
             var book = new Book()
             {
                 Id = Guid.NewGuid(),
@@ -63,7 +72,7 @@ namespace Biblioteca.Services
                 Author = addBookViewModel.Author,
                 Genre = addBookViewModel.Genre,
                 Availability = addBookViewModel.Availability,
-                ImgCover = addBookViewModel.ImgCover
+                ImgCover = webPath,
             };
             _context.Books.Add(book);
             return await SaveAsync();
@@ -92,12 +101,22 @@ namespace Biblioteca.Services
         {
             var book = await _context.Books.FindAsync(editBookViewModel.Id);
             if (book == null) { return false; }
+            var fileName = editBookViewModel.ImgCover.FileName;
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads", fileName);
+
+            await using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await editBookViewModel.ImgCover.CopyToAsync(stream);
+            }
+
+            var webPath = Path.Combine("Uploads", fileName).Replace("\\", "/");
+
 
             book.Title = editBookViewModel.Title;
             book.Author = editBookViewModel.Author;
             book.Genre = editBookViewModel.Genre;
             book.Availability = editBookViewModel.Availability;
-            book.ImgCover = editBookViewModel.ImgCover;
+            book.ImgCover = webPath;
 
             return await SaveAsync();
         }
