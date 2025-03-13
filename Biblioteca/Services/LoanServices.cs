@@ -8,10 +8,12 @@ namespace Biblioteca.Services
     public class LoanServices
     {
         private readonly LibraryDbContext _context;
+        private readonly EmailServices _emailServices;
 
-        public LoanServices(LibraryDbContext context)
+        public LoanServices(LibraryDbContext context, EmailServices emailServices)
         {
             _context = context;
+            _emailServices = emailServices;
         }
 
         private async Task<bool> SaveAsync()
@@ -55,6 +57,12 @@ namespace Biblioteca.Services
 
         public async Task<bool> AddLoanAsync(AddLoanViewModel addLoanViewModel)
         {
+            var book = await _context.Books.FindAsync(addLoanViewModel.BookId);
+            if (book == null)
+            {
+                return false;
+            }
+
             var prestito = new Prestito()
             {
                 Id = Guid.NewGuid(),  
@@ -62,10 +70,12 @@ namespace Biblioteca.Services
                 User = addLoanViewModel.User,
                 EmailUser = addLoanViewModel.EmailUser,
                 LoanDate = DateTime.Today, 
-                ReturnDate = DateTime.Today.AddDays(20)  
+                ReturnDate = DateTime.Today.AddDays(20),
+                Book= book,
             };
 
             _context.Prestiti.Add(prestito);
+            await _emailServices.SendEmailAsync(book.Title);
             return await SaveAsync();
         }
     }

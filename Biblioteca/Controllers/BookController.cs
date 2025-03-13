@@ -52,7 +52,7 @@ namespace Biblioteca.Controllers
                 TempData["Error"] = "Error while finding entity on database";
                 return RedirectToAction("Index");
             }
-
+      
             var bookDetailsViewModel = new BookDetailsViewModel()
             {
                 Id = book.Id,

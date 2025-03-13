@@ -7,10 +7,12 @@ namespace Biblioteca.Controllers
     public class LoanController : Controller
     {
         private readonly LoanServices _loanServices;
+      
 
         public LoanController(LoanServices loanServices)
         {
             _loanServices = loanServices;
+        
         }
         public async Task<IActionResult> Index()
         {
@@ -22,7 +24,8 @@ namespace Biblioteca.Controllers
         public IActionResult Add(Guid id)
         {
             var add = new AddLoanViewModel() {BookId=id};
-            
+
+
             return View(add);
         }
 
